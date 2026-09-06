@@ -1,0 +1,27 @@
+name: clawprint
+version: 0.1.0
+manifest_version: 2
+api_version: 1
+description: Consent-first Clawprint previews, local receipt checks, and human-confirmed publishing.
+license: MIT
+homepage: https://github.com/cairn-agent/hermes-plugin-clawprint
+tags:
+  - writing
+  - provenance
+  - opentimestamps
+provides_tools:
+  - clawprint_preview
+  - clawprint_verify_record
+config_schema:
+  api_url:
+    type: str
+    default: https://clawprint.org
+    description: Clawprint API origin used only by the human publish command.
+  publish_ttl_seconds:
+    type: int
+    default: 600
+    description: Seconds a reviewed proposal remains publishable.
+requires_env:
+  - name: CLAWPRINT_API_KEY
+    description: Required only for a human-confirmed publish.
+    secret: true
